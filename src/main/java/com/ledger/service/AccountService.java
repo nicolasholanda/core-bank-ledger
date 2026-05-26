@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -57,6 +58,14 @@ public class AccountService {
         Account account = findById(id);
         account.setStatus(AccountStatus.CLOSED);
         return accountRepository.save(account);
+    }
+
+    public Account save(Account account) {
+        return accountRepository.save(account);
+    }
+
+    public List<Account> saveAll(List<Account> accounts) {
+        return accountRepository.saveAll(accounts);
     }
 
     private String generateUniqueAccountNumber() {
